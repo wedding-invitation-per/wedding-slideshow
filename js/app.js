@@ -155,7 +155,8 @@ function go(i){clearTimeout(timer);const prev=cur>=0?S[cur].el:null;cur=(i+S.len
   else if(sc.keep){clean(prev,sc.keep)}
   else{prev.style.zIndex=3;prev.classList.add('out');clean(prev,720)}}
  typeIn(e,dis?450:0);
- if(playing)timer=setTimeout(()=>go(cur+1),sc.t*1000)}
+ /* giữ thêm HOLD giây sau khi slide diễn xong rồi mới chuyển (đổi trong config.js: hold: 3) */
+ if(playing)timer=setTimeout(()=>go(cur+1),(sc.t+(CFG.hold??3))*1000)}
 const au=document.getElementById('au');
 /* ===== NHẠC: playlist (comment dòng nào thì bài đó không phát) ===== */
 const M=CFG.music||{};
