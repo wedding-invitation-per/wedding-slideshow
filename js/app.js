@@ -85,7 +85,7 @@ const S=[
  P(10,'left:50px;top:330px;width:520px;height:540px;z-index:1','cc a-fade" style="--d:.2s;--du:.5s')+
  P('10b','left:1070px;top:330px;width:530px;height:540px;z-index:1','cc a-fade" style="--d:.2s;--du:.5s')+
  P(11,'left:410px;top:270px;width:780px;height:630px;z-index:3','cc dn pop-out pop-drift')+
- T('Bọn con đã có quãng thời gian tìm hiểu và được sự đón nhận<br>của Bố Mẹ hai bên.','script','left:200px;width:1200px;top:75px;font-size:42px;line-height:1.5',1.5,55)},
+ T('Chúng con đã có quãng thời gian tìm hiểu và được sự đón nhận<br>của Bố Mẹ hai bên.','script','left:200px;width:1200px;top:75px;font-size:42px;line-height:1.5',1.5,55)},
 /* 9. Ba ảnh đều nhau (rộng 506, cách 14, lề 27); khung cao hơn: 440 -> 570, giữa 610 -> 620 */
 {t:6.5,h:
  PF(40,40,80,.5,-8)+FL('left:1290px;top:-20px;width:300px;height:400px',.5)+
