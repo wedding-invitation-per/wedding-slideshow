@@ -7,6 +7,8 @@ window.CONFIG = {
   /* Điểm của ảnh (theo chiều cao, 0 = mép trên, 1 = mép dưới) được đặt vào TÂM khung.
      0.3125 = 2.5/4 của nửa trên ảnh (giữ mặt cô dâu chú rể). 0.5 = căn giữa như bình thường. */
   focusY: 0.3125,
+  /* Ảnh trong chữ LOVE: lấy phần nào của ảnh theo chiều dọc. Số nhỏ = lấy phần trên (ảnh như dịch xuống, thấy mặt), 0.5 = giữa, lớn = lấy phần dưới. */
+  loveFocusY: 0.25,
   focusExact: true,   // true = phóng thêm vừa đủ để điểm đó trùng hẳn tâm khung; false = chỉ lệch tới khi chạm mép ảnh (không phóng thêm)
   /* ---- NHẠC: danh sách phát. Muốn bỏ bài nào thì đặt // ở đầu dòng đó. ----
      Phát lần lượt từ trên xuống, hết bài cuối thì quay lại bài đầu.

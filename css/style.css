@@ -1,6 +1,6 @@
 :root{--red:#7a1414;--bg:#000;--page:#fbf5f0;--blue:#3b82f6;--blue2:#2563eb;--tan:#b98a6e;--ink:#1c1c1c;--ui:#e8e8e8}
 *{box-sizing:border-box;margin:0}
-html,body{height:100%;background:var(--bg);color:var(--ui);font-family:system-ui,sans-serif;overflow:hidden}
+html,body{height:100%;background:var(--bg);color:var(--ui);font-family:'Noto Serif',serif;font-optical-sizing:auto;font-variation-settings:"wdth" 100;overflow:hidden}
 body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 #wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
 #box{position:relative;overflow:hidden;background:#000;width:min(100vw,calc(100vh*16/9));aspect-ratio:16/9}
@@ -45,16 +45,16 @@ body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset
 @keyframes kb2{from{transform:scale(1.14)}to{transform:scale(1.0)}}
 @keyframes curve{from{opacity:0;transform:translateY(120px) perspective(900px) rotateX(18deg)}to{opacity:1;transform:none}}
 /* ===== FONT ===== */
-.script{font-family:'Dancing Script',cursive;font-weight:500;color:var(--ink)}
-.names{font-family:'Great Vibes',cursive;color:var(--red)}
-.serif{font-family:'Playfair Display',serif;font-weight:900;color:var(--red)}
-.love{font-family:'Archivo Black',sans-serif;color:var(--red)}
+.script{font-family:'Noto Serif',serif;font-style:normal;font-weight:500;color:var(--ink)}
+.names{font-family:'Noto Serif',serif;font-weight:700;color:var(--red)}
+.serif{font-family:'Noto Serif',serif;font-weight:900;color:var(--red)}
+.love{font-family:'Noto Serif',serif;font-weight:900;color:var(--red)}
 .tan{color:var(--tan)}
 .t{position:absolute;text-align:center;line-height:1.35}
 .cur::after{content:'|';opacity:.5;animation:bl .6s steps(2) infinite}
 @keyframes bl{50%{opacity:0}}
 /* LOVE: ảnh cắt theo chữ */
-.lovebox{position:absolute;left:130px;top:150px;width:1340px;height:420px;font:400 560px/420px 'Archivo Black',sans-serif;text-align:center;letter-spacing:-8px;color:transparent;background:linear-gradient(135deg,var(--blue),var(--blue2));-webkit-background-clip:text;background-clip:text;white-space:nowrap}
+.lovebox{position:absolute;left:130px;top:150px;width:1340px;height:420px;font:900 560px/420px 'Noto Serif',serif;text-align:center;letter-spacing:-8px;color:transparent;background:linear-gradient(135deg,var(--blue),var(--blue2));-webkit-background-clip:text;background-clip:text;white-space:nowrap}
 /* line wipe intro */
 .redbg{position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,#b01826,#8e1020)}
 .seam{position:absolute;left:800px;top:0;width:4px;height:900px;background:#fff;transform-origin:center}
@@ -64,7 +64,7 @@ body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset
 
 /* số ngày: Archivo Black co ngang để rộng ~275px/2 chữ số, cao ~225px như video */
 /* số ngày: nhỏ, mảnh hơn, căn phải cách mép ảnh 22px */
-.dnum{width:240px;display:flex;justify-content:flex-end;font:400 260px/1 'Archivo Black',sans-serif;color:#fff;-webkit-text-stroke:6px var(--red);paint-order:stroke fill;white-space:nowrap}
+.dnum{width:240px;display:flex;justify-content:flex-end;font:900 260px/1 'Noto Serif',serif;color:#fff;-webkit-text-stroke:6px var(--red);paint-order:stroke fill;white-space:nowrap}
 .dnum span{flex:none;display:inline-block;transform:scaleX(.6);transform-origin:right top;letter-spacing:-4px}
 
 /* ảnh cắt nền (cutout) bước ra khỏi nền đỏ: phóng nhẹ từ đáy, nhô ra ngoài khung đỏ */
