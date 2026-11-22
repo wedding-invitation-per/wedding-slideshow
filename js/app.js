@@ -47,7 +47,7 @@ const PS=(s,d=.4,flip=0)=>`<div class="abs a-wipeR" style="--d:${d}s;--du:1.3s;$
 /* cành lá vàng nhỏ (slide 11, 14, 16) */
 const GSP=`<path d="M70 262C64 200 76 130 60 14"/>`+[[68,230,44,-40],[68,200,46,215],[72,168,44,-35],[70,134,44,220],[64,100,40,-40],[60,66,38,218],[58,36,30,-45]].map(a=>lf(...a)).join('');
 const GS=(s,d=.6)=>`<div class="abs a-wipeR" style="--d:${d}s;--du:1.2s;${s}">${SV('0 0 140 270',GSP,'#b89358',1.3)}</div>`;
-const WASH=(s,d=.3)=>`<div class="wash a-fade" style="--d:${d}s;--du:1.2s;${s}"></div>`;
+const WASH=()=>'';
 
 const LOGO=(st)=>`<div class="abs a-pop" style="--d:1.4s;${st}"><div style="position:absolute;left:55px;top:0;width:195px;height:195px;border-radius:50%;background:#d9573a;display:flex;align-items:center;justify-content:center;font:400 128px/1 serif;color:#fbe9d0">囍</div>
 <svg viewBox="0 0 120 170" style="position:absolute;left:-5px;top:30px;width:150px;height:212px"><g fill="#2f2f33"><circle cx="28" cy="26" r="11"/><path d="M16 40h24l4 74h-32z"/><rect x="18" y="112" width="8" height="40"/><rect x="32" y="112" width="8" height="40"/></g><circle cx="28" cy="24" r="9" fill="#f1d3bd"/><path d="M19 22a9 9 0 0 1 18 0c-4-5-14-5-18 0z" fill="#2f2f33"/><g><circle cx="76" cy="30" r="10" fill="#f1d3bd"/><path d="M64 24a12 12 0 0 1 24 0v20H64z" fill="#fff" opacity=".85"/><path d="M68 42h16l12 108H56z" fill="#f6c9c4"/><circle cx="52" cy="70" r="9" fill="#e98fa0"/></g></svg></div>`;
@@ -57,7 +57,7 @@ const S=[
 /* 2. LOVE: ảnh cắt theo chữ (SVG, ép đúng bề rộng 1295px), chữ slab đậm */
 {t:6,tr:'split',bg:'linear-gradient(#f3e9e0 46%,#fbf5f0 46%)',h:
  `<svg class="abs" style="left:0;top:0" width="1600" height="900" viewBox="0 0 1600 900"><defs><linearGradient id="bl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#2563eb"/></linearGradient><clipPath id="lv"><text x="105" y="583" font-size="570" textLength="325" lengthAdjust="spacingAndGlyphs" font-family="'Noto Serif',serif" font-weight="900">L</text><text x="460" y="583" font-size="570" textLength="325" lengthAdjust="spacingAndGlyphs" font-family="'Noto Serif',serif" font-weight="900">O</text><text x="815" y="583" font-size="570" textLength="325" lengthAdjust="spacingAndGlyphs" font-family="'Noto Serif',serif" font-weight="900">V</text><text x="1170" y="583" font-size="570" textLength="325" lengthAdjust="spacingAndGlyphs" font-family="'Noto Serif',serif" font-weight="900">E</text></clipPath></defs><g clip-path="url(#lv)"><g class="kb" style="transform-box:fill-box;transform-origin:center;--kb:6s">${IMAGES.love?`<image href="${IMAGES.love}" x="100" y="150" width="1400" height="500" preserveAspectRatio="xMidYMid slice"/>`:`<rect x="100" y="150" width="1400" height="500" fill="url(#bl)"/><text x="800" y="400" font-size="40" fill="#fff" text-anchor="middle" font-family="system-ui">ẢNH love</text>`}</g></g></svg>`+
- T('Tình yêu là thử thách của thời gian,không phải kết hôn<br>mới là đích đến,mà là sự trọn vẹn sau hai chữ “Hôn nhân” hạnh phúc','script','left:100px;width:1400px;top:635px;font-size:38px;line-height:1.55',1.2,35)},
+ T('Tình yêu là thử thách của thời gian, không phải kết hôn<br>mới là đích đến,mà là sự trọn vẹn sau hai chữ “Hôn nhân” hạnh phúc','script','left:100px;width:1400px;top:635px;font-size:38px;line-height:1.55',1.2,35)},
 /* 3. 13 12 26 – đẩy lên từ dưới; 3 ảnh trồi lên + zoom nhẹ, số viền trắng nảy lên sát cạnh phải ảnh, lấp lánh
    (khung ảnh cao hơn: 560 -> 610) */
 {t:5.6,tr:'up',h:P(1,'left:50px;top:15px;width:495px;height:610px;border-radius:14px 0 0 0','cc a-grow" style="--d:.1s;--du:1.8s')+P(2,'left:555px;top:15px;width:495px;height:610px','cc a-grow" style="--d:.3s;--du:1.8s')+P(3,'left:1060px;top:15px;width:490px;height:610px;border-radius:0 14px 0 0','cc a-grow" style="--d:.5s;--du:1.8s')+
@@ -67,7 +67,7 @@ const S=[
  T('WELCOME TO OUR WEDDING','serif','left:0;width:1600px;top:652px;font-size:30px;letter-spacing:6px;font-weight:700;color:#333',1.2,30)+
  `<div class="t names a-up" style="--d:1.7s;left:0;width:1600px;top:712px;font-size:96px;font-family:'Noto Serif',serif;font-weight:700">VŨ MẠNH &amp; NGỌC ÁNH</div>`},
 /* 4. Thẻ trắng: cả khối đẩy lên từ dưới (92.3–92.7s). Nền đỏ là lớp riêng, ảnh cắt nền nhô ra khỏi nền đỏ */
-{t:3.6,tr:'up',bg:'radial-gradient(circle at 93% 88%,#f7c4cb 0,transparent 20%),linear-gradient(120deg,#fafafa,#ececec)',h:
+{t:3.6,tr:'up',bg:'#f4f2f0',h:
  '<div class="abs" style="left:120px;top:100px;width:1420px;height:640px;background:#fff;box-shadow:0 18px 30px #0003"></div>'+
  '<div class="abs" style="left:208px;top:128px;width:1252px;height:472px;background:#6b1010"></div>'+
  '<div class="abs" style="left:400px;top:0;width:760px;height:740px;overflow:hidden">'+P(4,'left:-25px;top:12px;width:810px;height:946px','pop-out nb rise-drift')+'</div>'+
@@ -78,21 +78,13 @@ const S=[
 /* 7. 3 ảnh, fade lần lượt (khung cao hơn: 470 -> 570) */
 {t:5.5,h:P(7,'left:200px;top:100px;width:380px;height:570px','a-grow" style="--du:1.6s')+P(8,'left:610px;top:100px;width:380px;height:570px','a-grow" style="--d:.45s;--du:1.6s')+P(9,'left:1020px;top:100px;width:380px;height:570px','a-grow" style="--d:.9s;--du:1.6s')+
  T('Gửi hàng triệu lời cảm ơn và tất cả yêu thương từ sâu thẳm trái tim.<br>Chúng con cảm ơn Bố Mẹ hai bên đã chấp thuận và cưu đẹp.','script','left:150px;width:1300px;top:700px;font-size:34px',1.4,30)},
-/* 8. Nền đỏ cong (SVG) + 3 lớp ảnh: trái/phải z thấp, giữa z cao (108.9–119s) */
-{t:9,h:
- `<svg class="abs a-fade" style="inset:0;--du:.5s" width="1600" height="900" viewBox="0 0 1600 900"><path d="M0 850Q800 770 1600 850L1600 900L0 900Z" fill="#eadbd0"/></svg>`+
- WASH('left:-60px;top:-60px;width:520px;height:340px',.3)+PS('left:10px;top:0;width:190px;height:250px',.5)+FL('left:1290px;top:-40px;width:270px;height:360px',.6)+GS('left:215px;top:105px;width:85px;height:175px',1)+GS('left:1230px;top:150px;width:85px;height:175px',1.2)+PS('left:300px;top:240px;width:120px;height:90px;overflow:hidden',1.3)+PF(1290,80,82,.7,-10)+PF(1440,170,70,.9,15)+PF(1500,50,56,1.1,30)+
- P(10,'left:50px;top:330px;width:520px;height:540px;z-index:1','cc a-fade" style="--d:.2s;--du:.5s')+
- P('10b','left:1070px;top:330px;width:530px;height:540px;z-index:1','cc a-fade" style="--d:.2s;--du:.5s')+
- P(11,'left:410px;top:270px;width:780px;height:630px;z-index:3','cc dn pop-out pop-drift')+
- T('Chúng con đã có quãng thời gian tìm hiểu và được sự đón nhận<br>của Bố Mẹ hai bên.','script','left:200px;width:1200px;top:75px;font-size:42px;line-height:1.5',1.5,55)},
 /* 9. Ba ảnh đều nhau (rộng 506, cách 14, lề 27); khung cao hơn: 440 -> 570, giữa 610 -> 620 */
 {t:6.5,h:
  PF(40,40,80,.5,-8)+FL('left:1290px;top:-20px;width:300px;height:400px',.5)+
  T('Và ngày hôm nay, là ngày quan trọng nhất<br>của cuộc đời vợ chồng chúng con.','script','left:135px;width:1200px;top:105px;font-size:36px;line-height:1.7',.4,45)+
  P(12,'left:27px;top:300px;width:506px;height:570px','cc a-left')+P(13,'left:547px;top:270px;width:506px;height:620px','cc a-up" style="--d:.3s')+P(14,'left:1067px;top:300px;width:506px;height:570px','cc a-right')},
 /* 10. Ba ô ảnh cong: cả cụm trượt đồng loạt từ trái sang phải (127.3–137s) */
-{t:9,bg:'radial-gradient(circle at 0 100%,#f9d3d8 0,transparent 22%),radial-gradient(circle at 100% 0,#fbdfe2 0,transparent 15%),#fbf5f0',h:
+{t:9,bg:'#fbf5f0',h:
  WASH('left:-80px;top:560px;width:620px;height:420px',.4)+WASH('left:1200px;top:-80px;width:500px;height:300px',.4)+PS('left:30px;top:0;width:210px;height:90px;overflow:hidden',.5)+
  '<div class="abs a-slideLR" style="inset:0;--du:1.2s"><div class="abs drift" style="inset:0">'+
  P(15,'left:-60px;top:20px;width:560px;height:650px;clip-path:polygon(0 20px,560px 50px,560px 610px,0 640px)')+
@@ -123,7 +115,7 @@ const S=[
 /* 15. Hai nửa hình tròn BẰNG NHAU (r=332): nửa trái cao hơn, nửa phải thấp hơn, hở 76px, tròn be nhỏ ở giữa.
    Đo từ video: đứng yên khi mở cảnh rồi trôi chậm (không bay nhanh). Mở cảnh bằng dải màu quét phải→trái (165.5–174.4s) */
 {t:8.8,keep:1100,bg:'transparent',h:
- `<div class="abs a-fade" style="--d:.55s;--du:.4s;inset:0;background:linear-gradient(115deg,#fbf5f0,#efe9e4 35%,#fbf5f0 55%,#f0eae5 80%,#fbf5f0);overflow:hidden"><svg class="silk" width="1700" height="900" viewBox="0 0 1700 900" style="position:absolute;left:-50px;top:0;filter:blur(22px)" fill="none"><path d="M-100 120C300 20 600 320 1000 180S1500 60 1800 240" stroke="#d6d6dc" stroke-width="70" opacity=".5"/><path d="M-100 520C250 420 560 700 980 560S1500 420 1800 620" stroke="#d0d0d8" stroke-width="90" opacity=".45"/><path d="M-100 820C300 720 640 900 1050 800S1500 740 1800 860" stroke="#dcdce2" stroke-width="60" opacity=".5"/><path d="M200 0C260 250 160 500 330 900" stroke="#fff" stroke-width="50" opacity=".8"/></svg></div>`+
+ `<div class="abs a-fade" style="--d:.55s;--du:.4s;inset:0;background:#fbf5f0"></div>`+
  A('a-fade',.6,'left:340px;top:250px;width:300px;height:300px;border-radius:50%;background:#ecd9cc;--du:.4s')+
  P(32,'left:80px;top:60px;width:332px;height:664px;border-radius:332px 0 0 332px','halfL a-fade" style="--d:.55s;--du:.4s')+
  P(33,'left:488px;top:160px;width:332px;height:664px;border-radius:0 332px 332px 0','halfR a-fade" style="--d:.55s;--du:.4s')+
