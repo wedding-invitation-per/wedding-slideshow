@@ -73,7 +73,7 @@ const S=[
  '<div class="abs" style="left:400px;top:0;width:760px;height:740px;overflow:hidden">'+P(4,'left:-25px;top:12px;width:810px;height:946px','pop-out nb rise-drift')+'</div>'+
  '<div class="abs" style="left:120px;top:600px;width:1420px;height:140px;background:#fff"></div>'+
  TX('NGỌC ÁNH &amp; VŨ MẠNH','serif',0,625,1600,52,0,'letter-spacing:2px;font-weight:700')+
- TX('2002 - 1998','serif',0,785,1600,44,0,'letter-spacing:6px;color:#c9a58d')+
+ TX('1999 - 2000','serif',0,785,1600,44,0,'letter-spacing:6px;color:#c9a58d')+
  '<div class="abs" style="left:310px;top:824px;width:160px;height:2px;background:#444"></div><div class="abs" style="left:1110px;top:824px;width:160px;height:2px;background:#444"></div>'},
 /* 7. 3 ảnh, fade lần lượt (khung cao hơn: 470 -> 570) */
 {t:5.5,h:P(7,'left:200px;top:100px;width:380px;height:570px','a-grow" style="--du:1.6s')+P(8,'left:610px;top:100px;width:380px;height:570px','a-grow" style="--d:.45s;--du:1.6s')+P(9,'left:1020px;top:100px;width:380px;height:570px','a-grow" style="--d:.9s;--du:1.6s')+
