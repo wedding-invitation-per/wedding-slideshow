@@ -77,7 +77,7 @@ const S=[
  '<div class="abs" style="left:310px;top:824px;width:160px;height:2px;background:#444"></div><div class="abs" style="left:1110px;top:824px;width:160px;height:2px;background:#444"></div>'},
 /* 7. 3 ảnh, fade lần lượt (khung cao hơn: 470 -> 570) */
 {t:5.5,h:P(7,'left:200px;top:100px;width:380px;height:570px','a-grow" style="--du:1.6s')+P(8,'left:610px;top:100px;width:380px;height:570px','a-grow" style="--d:.45s;--du:1.6s')+P(9,'left:1020px;top:100px;width:380px;height:570px','a-grow" style="--d:.9s;--du:1.6s')+
- T('Gửi hàng triệu lời cảm ơn và tất cả yêu thương từ sâu thẳm trái tim.<br>Chúng con cảm ơn Bố Mẹ hai bên đã chấp thuận và cưu đẹp.','script','left:150px;width:1300px;top:700px;font-size:34px',1.4,30)},
+ T('Gửi hàng triệu lời cảm ơn và tất cả yêu thương từ sâu thẳm trái tim.<br>Chúng con cảm ơn Bố Mẹ hai bên đã chấp thuận và vun đắp.','script','left:150px;width:1300px;top:700px;font-size:34px',1.4,30)},
 /* 9. Ba ảnh đều nhau (rộng 506, cách 14, lề 27); khung cao hơn: 440 -> 570, giữa 610 -> 620 */
 {t:6.5,h:
  PF(40,40,80,.5,-8)+FL('left:1290px;top:-20px;width:300px;height:400px',.5)+
@@ -144,7 +144,7 @@ function typeIn(el,off=0){tyTimers.forEach(clearTimeout);tyTimers=[];
  el.querySelectorAll('[data-type]').forEach(n=>{const full=n.dataset.type,sp=+n.dataset.s,d=+n.dataset.d*1000+off;n.innerHTML='';
   let k=0;const parts=full.split(/(<br>)/);const chars=[];parts.forEach(p=>p==='<br>'?chars.push('<br>'):[...p].forEach(c=>chars.push(c)));
   tyTimers.push(setTimeout(function step(){if(k<=chars.length){n.innerHTML=chars.slice(0,k).join('')+(k<chars.length?'<span style="opacity:0">'+chars.slice(k).join('')+'</span>':'');k++;tyTimers.push(setTimeout(step,sp))}},d))})}
-function clean(p,ms){setTimeout(()=>{if(S[cur].el!==p){const o=S.find(x=>x.el===p);p.className='sc';p.style.cssText=o.base}},ms)}
+function clean(p,ms){if(window.__RENDER)return;setTimeout(()=>{if(S[cur].el!==p){const o=S.find(x=>x.el===p);p.className='sc';p.style.cssText=o.base}},ms)}
 function go(i){clearTimeout(timer);const prev=cur>=0?S[cur].el:null;cur=(i+S.length)%S.length;const sc=S[cur],e=sc.el;
  S.forEach(x=>{if(x.el!==e&&x.el!==prev){x.el.className='sc';x.el.style.cssText=x.base}});
  e.className='sc';e.style.cssText=sc.base;void e.offsetWidth;e.className='sc on';e.style.zIndex=2;
@@ -175,3 +175,49 @@ const playMusic=()=>{if(au.src&&au.paused)au.play().catch(()=>{})};
 if(au.src)au.play().catch(()=>{});            /* thử phát ngay khi mở web (nếu trình duyệt cho phép) */
 ['pointerdown','keydown','touchstart'].forEach(ev=>addEventListener(ev,playMusic,{once:true,passive:true}));
 document.fonts.ready.then(()=>go(0));   /* vào luôn, không cần bấm */
+
+/* ===== HỖ TRỢ RENDER RA MP4 (dùng với render.js) — không ảnh hưởng khi xem web bình thường ===== */
+(function(){
+  const HOLD=CFG.hold??3, starts=[]; let total=0;
+  S.forEach(s=>{starts.push(total);total+=s.t+HOLD});
+  const splitChars=full=>{const o=[];full.split(/(<br>)/).forEach(p=>p==='<br>'?o.push('<br>'):[...p].forEach(c=>o.push(c)));return o};
+  /* chữ gõ: tính số ký tự đã hiện tại thời điểm ms (giống typeIn nhưng không dùng setTimeout) */
+  const typeAt=(el,ms,off)=>el.querySelectorAll('[data-type]').forEach(n=>{
+    const cs=splitChars(n.dataset.type),sp=+n.dataset.s,el0=ms-(+n.dataset.d*1000+off);
+    if(el0<0){n.innerHTML='';return}
+    const k=Math.min(cs.length,Math.floor(el0/sp));
+    n.innerHTML=cs.slice(0,k).join('')+(k<cs.length?'<span style="opacity:0">'+cs.slice(k).join('')+'</span>':'')});
+  const winMs=sc=>sc.tr==='up'||sc.tr==='down'?800:sc.tr==='split'?1300:sc.keep?sc.keep:720;
+  const setAnim=(el,fn)=>el.getAnimations({subtree:true}).forEach(a=>{a.pause();a.currentTime=fn(a)});
+
+  window.__seek=t=>{
+    window.__RENDER=true;playing=false;clearTimeout(timer);tyTimers.forEach(clearTimeout);tyTimers=[];
+    t=Math.max(0,Math.min(total-0.001,t));
+    let i=S.length-1;while(i>0&&starts[i]>t)i--;
+    const sc=S[i],ms=(t-starts[i])*1000,prevS=i>0?S[i-1]:null;
+    S.forEach(x=>{x.el.className='sc';x.el.style.cssText=x.base});
+    if(prevS){prevS.el.className='sc on';prevS.el.style.zIndex=2}
+    cur=i-1;                         // để go(i) coi slide i-1 là slide trước, đúng như khi chạy thật
+    go(i);
+    tyTimers.forEach(clearTimeout);tyTimers=[];
+    void document.body.offsetWidth;
+    const dis=!!prevS&&!(sc.tr||sc.keep);
+    typeAt(sc.el,ms,dis?450:0);
+    setAnim(sc.el,()=>ms);
+    if(prevS){
+      typeAt(prevS.el,Infinity,0);
+      if(ms>=winMs(sc)){prevS.el.className='sc';prevS.el.style.cssText=prevS.base}
+      else setAnim(prevS.el,a=>a instanceof CSSTransition?ms:(prevS.t+HOLD)*1000+ms);
+    }
+  };
+
+  window.__renderInfo=()=>{
+    const R=CFG.render||{},src=R.music!==undefined?R.music:LIST[0],audio=[];
+    if(src)audio.push({src:musicUrl(src),start:0,volume:R.volume??M.volume??.6,from:R.from??M.start??0});
+    return{duration:total,audio};
+  };
+
+  window.__ready=false;
+  const imgs=()=>Promise.all([...document.images].map(i=>i.complete?0:new Promise(r=>{i.addEventListener('load',r);i.addEventListener('error',r)})));
+  Promise.all([document.fonts.ready,imgs()]).then(()=>new Promise(r=>setTimeout(r,600))).then(imgs).then(()=>{window.__ready=true});
+})();
